@@ -13,6 +13,7 @@ func init() {
 	listCmd.AddCommand(listRepoCmd)
 
 	listRepoCmd.Flags().IntP("limit", "L", 30, "Maximum number of items to fetch")
+	listRepoCmd.Flags().StringP("org", "", "", "List repositories for the organization")
 	listRepoCmd.Flags().BoolP("raw", "", false, "Display raw output")
 }
 

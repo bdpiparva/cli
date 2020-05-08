@@ -417,9 +417,11 @@ type RepositoriesResopnse struct {
 
 func Repositories(client *Client, limit int) (*RepositoriesResopnse, error) {
 	query := `
-	query($limit: Int!, $endCursor: String) {
+	query($organization: String!, $limit: Int!, $endCursor: String) {
 		viewer {
-			repositories(first: $limit, after: $endCursor, affiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER], ownerAffiliations:[OWNER, ORGANIZATION_MEMBER, COLLABORATOR]) {
+			repositories(first: $limit, after: $endCursor, 
+				affiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER], 
+				ownerAffiliations:[OWNER, ORGANIZATION_MEMBER, COLLABORATOR]) {
 				totalCount
 				nodes {
 					nameWithOwner
